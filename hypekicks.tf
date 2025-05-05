@@ -35,3 +35,14 @@ resource "aws_subnet" "subnet_public_jump" { #subred publica del jump server
   }
   
 }
+
+#Subred privada del backend
+resource "aws_subnet" "subnet_private_bkd" { #backend
+  vpc_id = aws_vpc.hypekicks_vpc.id
+  cidr_block = "10.10.3.0/24"
+  availability_zone = "us-east-1a"
+  map_public_ip_on_launch = true
+  tags = {
+    Name = "Hypekicks-private-bkd"
+  }
+}
