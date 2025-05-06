@@ -1,0 +1,48 @@
+#
+provider "aws" {
+    region = "us-east-1"
+}
+
+#VPC 
+resource "aws_vpc" "hypekicks_vpc" {
+  cidr_block = "10.10.0.0/16"
+  enable_dns_support = true
+  enable_dns_hostnames = true
+  tags = {
+    Name = "Hypekicks-vpc"
+  }
+}
+
+#Subred publica del frontend
+resource "aws_subnet" "subnet_public_ftn" { #subred publica del frontend
+  vpc_id = aws_vpc.hypekicks_vpc.id
+  cidr_block = "10.10.1.0/24"
+  availability_zone = "us-east-1a"
+  map_public_ip_on_launch = true
+  tags = {
+    Name = "Hypekicks-public-ftn"
+  }
+}
+
+#subred publica del jump server
+resource "aws_subnet" "subnet_public_jump" { #subred publica del jump server
+  vpc_id = aws_vpc.hypekicks_vpc.id
+  cidr_block = "10.10.2.0/24"
+  availability_zone = "us-east-1b"
+  map_public_ip_on_launch = true
+  tags = {
+    Name = "Hypekicks-public-jump"
+  }
+  
+}
+
+#Subred privada del backend
+resource "aws_subnet" "subnet_private_bkd" { #backend
+  vpc_id = aws_vpc.hypekicks_vpc.id
+  cidr_block = "10.10.3.0/24"
+  availability_zone = "us-east-1a"
+  map_public_ip_on_launch = true
+  tags = {
+    Name = "Hypekicks-private-bkd"
+  }
+}
