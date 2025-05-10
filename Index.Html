@@ -13,10 +13,12 @@
       <h1 class="titulo-centro">HYPEKICKS</h1>
       <div class="navbar-right">
         <button id="btn-carrito">🛒(<span id="contador">0</span>)</button>
+        <button id="btn-login">Iniciar sesion </button>
+        <button id="btn-logout">Cerrar sesión</button>
+
       </div>
     </div>
   </header>
-
   <div id="pestaña-carrito" class="modal">
     <div class="modal-contenido">
       <span class="cerrar" onclick="cerrarModal()">&times;</span>
@@ -26,6 +28,35 @@
       <button onclick="finalizarCompra()">Comprar</button>
     </div>
   </div>
+
+<!-- Modal con opciones de inicio de sesión o registro -->
+<div id="modal-login" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="cerrarModal()">×</span>
+    <h2>Iniciar sesión</h2>
+    <form id="login-form">
+      <input type="email" id="email-login" placeholder="Correo electrónico" required>
+      <input type="password" id="contraseña-login" placeholder="Contraseña" required>
+      <button type="submit">Iniciar sesión</button>
+    </form>
+    <p>¿No tienes cuenta? <a href="#" onclick="mostrarRegistro()">Regístrate aquí</a></p>
+  </div>
+</div>
+
+<!-- Modal de registro -->
+<div id="modal-registro" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="cerrarModal()">×</span>
+    <h2>Registrarse</h2>
+    <form id="registro-form">
+      <input type="text" id="nombre" placeholder="Nombre" required>
+      <input type="email" id="email" placeholder="Correo electrónico" required>
+      <input type="password" id="contraseña" placeholder="Contraseña" required>
+      <button type="submit">Registrar</button>
+    </form>
+  </div>
+</div>
+
 
   <div class="Marcas">
     <a href="/Subpaginas/nike.html" class="Nike">
@@ -70,6 +101,7 @@
       <input type="text" id="nombre" placeholder="Nombre del producto" required>
       <input type="number" id="precio" placeholder="Precio" required>
       <input type="text" id="imagen" placeholder="URL de la imagen" required>
+      <input type="number" id="stock" placeholder="Cantidad en inventario" required>
       <button type="submit">Agregar</button>
     </form>
   </div>
