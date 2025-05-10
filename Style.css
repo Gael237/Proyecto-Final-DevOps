@@ -1,0 +1,273 @@
+@media (max-width: 768px) {
+    .Marcas {
+        gap: 10px;
+    }
+
+    .Marcas a {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+.Navbar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #f4f4f4;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 60px; 
+}
+
+#Logo {
+    width: 80px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.titulo-centro {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.navbar-right {
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    padding: 8px 12px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+.Marcas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 40px 0;
+}
+
+.Marcas a {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f4;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease;
+}
+
+.Marcas a:hover {
+    transform: translateY(-5px);
+}
+
+.Marcas img {
+    width: 80%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.Marcas p {
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+}
+
+.Mas-comprados {
+    align-content: center;
+    text-align: center;
+}
+.Mas-comprados img {
+    width: 1300px;
+}
+
+.Tenis-nike h1{
+    text-align: center;
+
+}
+
+.producto {
+    width: 300px;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #000000;
+    text-align: center;
+    margin: 20px auto;
+    
+  }
+  
+
+  
+.producto img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .producto h3 {
+    font-size: 22px;
+    color: #ffffff;
+    margin-bottom: 10px;
+  }
+  
+  .producto p {
+    font-size: 18px;
+    color: #ffffff;
+    margin-bottom: 15px;
+  }
+  
+  .producto button {
+    background-color: #fcfafa;
+    color: #000000;
+    font-size: 16px;
+    border-radius: 8px;
+    
+  }
+  
+  .producto button:hover {
+    background-color: #333;
+  }
+  
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-contenido {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+  }
+  
+  .cerrar {
+    position: absolute;
+    top: 10px; right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .producto-carrito {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .producto-carrito img {
+    width: 80px;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .producto-carrito h3 {
+    flex-grow: 1;
+    margin: 0 20px;
+    font-size: 16px;
+  }
+  
+  .producto-carrito p {
+    margin-right: 15px;
+    font-weight: bold;
+  }
+  
+  .producto-carrito button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .NavbarNike {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #f4f4f4;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 60px; 
+}
+/* Formulario de agregar producto */
+.formulario-producto {
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 30px auto;
+  text-align: center;
+}
+
+.formulario-producto h2 {
+  font-size: 24px;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+.formulario-producto form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.formulario-producto input {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #000000;
+}
+
+.formulario-producto input:focus {
+  border-color: #333;
+  outline: none;
+}
+
+.formulario-producto button {
+  padding: 10px 15px;
+  font-size: 16px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.formulario-producto button:hover {
+  background-color: #555;
+}
+

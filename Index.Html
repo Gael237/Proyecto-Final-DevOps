@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="Style.css" />
+  <title>HYPEKICKS</title>
+</head>
+<body>
+  <header>
+    <div class="Navbar">
+      <img src="Logo/logo.jpg" alt="Logo" id="Logo" />
+      <h1 class="titulo-centro">HYPEKICKS</h1>
+      <div class="navbar-right">
+        <button id="btn-carrito">🛒(<span id="contador">0</span>)</button>
+      </div>
+    </div>
+  </header>
+
+  <div id="pestaña-carrito" class="modal">
+    <div class="modal-contenido">
+      <span class="cerrar" onclick="cerrarModal()">&times;</span>
+      <h2>🛒 Tu Carrito</h2>
+      <div id="carrito-contenido"></div>
+      <button onclick="vaciarCarrito()">Vaciar carrito</button>
+      <button onclick="finalizarCompra()">Comprar</button>
+    </div>
+  </div>
+
+  <div class="Marcas">
+    <a href="/Subpaginas/nike.html" class="Nike">
+      <img src="Logo/Nike.png" alt="Nike" />
+      <p>Nike</p>
+    </a>
+    <a href="/Subpaginas/adidas.html" class="Adidas">
+      <img src="Logo/Adidas.jpg" alt="Adidas" />
+      <p>adidas</p>
+    </a>
+    <a href="/Subpaginas/puma.html" class="Puma">
+      <img src="Logo/Puma.jpg" alt="Puma" />
+      <p>Puma</p>
+    </a>
+    <a href="/Subpaginas/underarmour.html" class="underarmour">
+      <img src="Logo/under armour.jpg" alt="Under Armour" />
+      <p>Under Armour</p>
+    </a>
+  </div>
+
+  <div class="Mas-comprados">
+    <h1>Más comprados</h1>
+    <img src="https://assetspwa.liverpool.com.mx/assets/digital/landing/adidas/img/blp_adidas_Desc_0724.jpg" alt="" />
+  </div>
+
+
+  <div class="contenedor-principal">
+    <h2>Nuestros Productos</h2>
+    <div id="contenedor-productos" class="contenedor-productos">
+      <div class="producto" data-nombre="Nike Air Force 1 Shadow" data-precio="3199" data-imagen="https://99store.mx/cdn/shop/products/DD9624-100-PHCFH001-2000.png?v=1743552245&width=1445">
+        <img src="https://99store.mx/cdn/shop/products/DD9624-100-PHCFH001-2000.png?v=1743552245&width=1445" alt="Nike Air Force 1 High">
+        <h3>Nike Air Force 1 High</h3>
+        <p>$2499 MXN</p>
+        <button onclick="agregarAlCarrito(this)">Agregar al carrito</button>
+    </div>
+    </div>
+  </div>
+
+  <div class="formulario-producto">
+    <h2>Agregar nuevo producto</h2>
+    <form id="form-agregar-producto">
+      <input type="text" id="nombre" placeholder="Nombre del producto" required>
+      <input type="number" id="precio" placeholder="Precio" required>
+      <input type="text" id="imagen" placeholder="URL de la imagen" required>
+      <button type="submit">Agregar</button>
+    </form>
+  </div>
+  
+
+  <footer>
+    <p>REDES SOCIALES</p>
+    <ul>
+      <li><a href="Link">Facebook</a></li>
+      <li><a href="Link">Instagram</a></li>
+      <li><a href="Link">YouTube</a></li>
+    </ul>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
