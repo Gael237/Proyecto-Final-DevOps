@@ -99,7 +99,7 @@ resource "aws_security_group" "jump_server_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["189.219.115.233/32"] # Reemplaza con tu IP pública
+    cidr_blocks = ["189.219.112.253/32"] # Reemplaza con tu IP pública
     description = "PermiteSSHDesdeMiIP"
   }
   egress {
