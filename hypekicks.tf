@@ -3,6 +3,19 @@ provider "aws" {
     region = "us-east-1"
 }
 
+#IP's elasticas
+resource "aws_eip" "jump_eip" {
+  tags = {
+    Name = "HypeKicks-jump-EIP"
+  }
+}
+
+resource "aws_eip" "frontend_eip" {
+  tags = {
+    Name = "HypeKicks-Frontend-EIP"
+  }
+}
+
 #VPC 
 resource "aws_vpc" "hypekicks_vpc" {
   cidr_block = "10.10.0.0/16"
@@ -165,9 +178,16 @@ resource "aws_instance" "jump_server" {
   subnet_id     = aws_subnet.subnet_public_jump.id
   vpc_security_group_ids = [aws_security_group.jump_server_sg.id]
   key_name      = "HypeKicks-Public-keys"       # Reemplaza con el nombre de tu clave SSH en AWS primero la tendremos que agregar
+  associate_public_ip_address = false
+
   tags = {
     Name = "hypekicks-jump-server"
   }
+}
+
+resource "aws_eip_association" "jump_eip_assoc" {
+  instance_id = aws_instance.jump_server.id
+  allocation_id = aws_eip.jump_eip.id
 }
 
 
@@ -178,9 +198,17 @@ resource "aws_instance" "frontend_server" {
   subnet_id     = aws_subnet.subnet_public_ftn.id
   vpc_security_group_ids = [aws_security_group.frontend_sg.id]
   key_name      = "HypeKicks-Public-keys" #Se usara la que se creo
+  associate_public_ip_address = false
+
   tags = {
     Name = "hypekicks-frontend"
   }
+}
+
+
+resource "aws_eip_association" "frontend_eip_assoc" {
+  instance_id = aws_instance.frontend_server.id
+  allocation_id = aws_eip.frontend_eip.id
 }
 
 
