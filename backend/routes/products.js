@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
 
 // POST: Agregar un nuevo producto
 router.post('/', async (req, res) => {
-  const { nombre, precio, imagen } = req.body;
+  const { nombre, precio, imagen, stock } = req.body;
 
   // Validación manual por si viene vacío
   if (!nombre || !precio || !imagen) {
@@ -20,7 +20,16 @@ router.post('/', async (req, res) => {
   }
 
   try {
-    const nuevoProducto = new Product({ nombre, precio, imagen });
+    const nuevoProducto = new Product({ nombre, 
+      precio,
+      imagen,
+      stock: {
+        S: stock?.S || 0,
+        M: stock?.M || 0,
+        L: stock?.L || 0,
+      } 
+    });
+    
     const productoGuardado = await nuevoProducto.save();
     res.status(201).json(productoGuardado);
   } catch (err) {
