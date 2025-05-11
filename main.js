@@ -186,44 +186,16 @@ function cargarProductos() {
 }
 
 // AGREGAR NUEVO PRODUCTO
-// AGREGAR NUEVO PRODUCTO
 document.getElementById('form-agregar-producto').addEventListener('submit', function (e) {
   e.preventDefault(); // Evita que recargue la página
 
   const nombre = document.getElementById('nombre').value;
-  const precio = parseFloat(document.getElementById('precio').value);
+  const precio = document.getElementById('precio').value;
   const imagen = document.getElementById('imagen').value;
 
-  const stockS = parseInt(document.getElementById('stock-S').value) || 0;
-  const stockM = parseInt(document.getElementById('stock-M').value) || 0;
-  const stockL = parseInt(document.getElementById('stock-L').value) || 0;
-
-  const stockData = {
-    S: stockS,
-    M: stockM,
-    L: stockL
-  };
-
-  fetch('http://localhost:3000/api/products', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ nombre, precio, imagen, stock: stockData }) // <-- Ahora enviamos el objeto stockData
-  })
-    .then(response => response.json())
-    .then(producto => {
-      alert('Producto agregado correctamente');
-      cargarProductos(); // Esto recargará la lista de productos desde la base de datos, mostrando el nuevo producto guardado
-      document.getElementById('form-agregar-producto').reset();
-    })
-    .catch(error => console.error('Error al agregar producto:', error));
-
-  // No necesitas agregar el producto al DOM directamente aquí si estás recargando la lista con cargarProductos()
-  // const productoDiv = document.createElement('div');
-  // productoDiv.classList.add('producto');
-  // productoDiv.innerHTML = `...`;
-  // document.getElementById('contenedor-productos').appendChild(productoDiv);
+  const stockS = document.getElementById('stock-S').value || 0;
+  const stockM = document.getElementById('stock-M').value || 0;
+  const stockL = document.getElementById('stock-L').value || 0;
 
 
   // Crear el div del producto
