@@ -90,6 +90,12 @@
         <img src="https://99store.mx/cdn/shop/products/DD9624-100-PHCFH001-2000.png?v=1743552245&width=1445" alt="Nike Air Force 1 High">
         <h3>Nike Air Force 1 High</h3>
         <p>$2499 MXN</p>
+        <p><strong>Tallas disponibles:</strong>
+  <select class="select-talla">
+    ${producto.talla.map(t => `<option value="${t}">${t}</option>`).join('')}
+  </select>
+</p>
+
         <button onclick="agregarAlCarrito(this)">Agregar al carrito</button>
     </div>
     </div>
@@ -101,7 +107,10 @@
       <input type="text" id="nombre" placeholder="Nombre del producto" required>
       <input type="number" id="precio" placeholder="Precio" required>
       <input type="text" id="imagen" placeholder="URL de la imagen" required>
-      <input type="number" id="stock" placeholder="Cantidad en inventario" required>
+      <input type="number" id="stock-S" placeholder="Stock talla S">
+      <input type="number" id="stock-M" placeholder="Stock talla M">
+      <input type="number" id="stock-L" placeholder="Stock talla L">
+
       <button type="submit">Agregar</button>
     </form>
   </div>

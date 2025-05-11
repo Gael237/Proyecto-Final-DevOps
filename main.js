@@ -1,19 +1,28 @@
 // CARRITO
 function agregarAlCarrito(button) {
   const productoDiv = button.closest(".producto");
+  const tallaSelect = productoDiv.querySelector(".select-talla");
+  const tallaSeleccionada = tallaSelect ? tallaSelect.value : null;
+
   const producto = {
     id: Date.now(),
     nombre: productoDiv.getAttribute("data-nombre"),
     precio: parseFloat(productoDiv.getAttribute("data-precio")),
-    imagen: productoDiv.querySelector("img").src
-
+    imagen: productoDiv.querySelector("img").src,
+    talla: tallaSeleccionada
   };
+
+  if (!producto.talla) {
+    alert("Por favor selecciona una talla antes de agregar al carrito");
+    return;
+  }
 
   let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
   carrito.push(producto);
   localStorage.setItem('carrito', JSON.stringify(carrito));
   actualizarContador();
 }
+
 
 function mostrarCarrito() {
   const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
@@ -161,7 +170,12 @@ function cargarProductos() {
   <p><strong>Precio:</strong> $${producto.precio}</p>
   <p><strong>Inventario:</strong> ${producto.stock || 0}</p>
   <p><strong>Descripción:</strong> ${producto.descripcion || "Sin descripción"}</p>
-  <p><strong>Tallas disponibles:</strong> ${producto.talla?.join(', ') || 'N/A'}</p>
+  <p><strong>Tallas disponibles:</strong> 
+  <select class="select-talla">
+    ${producto.talla?.map(t => `<option value="${t}">${t}</option>`).join('') || '<option>No disponibles</option>'}
+  </select>
+</p>
+
   <button onclick="agregarAlCarrito(this)">Agregar al carrito</button>
 `;
 
@@ -173,12 +187,41 @@ function cargarProductos() {
 
 // AGREGAR NUEVO PRODUCTO
 document.getElementById('form-agregar-producto').addEventListener('submit', function (e) {
-  e.preventDefault();
+  e.preventDefault(); // Evita que recargue la página
 
   const nombre = document.getElementById('nombre').value;
-  const precio = parseFloat(document.getElementById('precio').value);
+  const precio = document.getElementById('precio').value;
   const imagen = document.getElementById('imagen').value;
-  const stock = parseInt(document.getElementById('stock').value); 
+
+  const stockS = document.getElementById('stock-S').value || 0;
+  const stockM = document.getElementById('stock-M').value || 0;
+  const stockL = document.getElementById('stock-L').value || 0;
+
+  // Crear el div del producto
+  const productoDiv = document.createElement('div');
+  productoDiv.classList.add('producto');
+
+  productoDiv.innerHTML = `
+    <img src="${imagen}" alt="${nombre}">
+    <h3>${nombre}</h3>
+    <p>$${precio} MXN</p>
+    <p><strong>Tallas disponibles:</strong>
+      <select class="select-talla">
+        ${stockS > 0 ? '<option value="S">S</option>' : ''}
+        ${stockM > 0 ? '<option value="M">M</option>' : ''}
+        ${stockL > 0 ? '<option value="L">L</option>' : ''}
+      </select>
+    </p>
+    <button onclick="agregarAlCarrito(this)">Agregar al carrito</button>
+  `;
+
+  // Agregar al contenedor
+  document.getElementById('contenedor-productos').appendChild(productoDiv);
+
+  // Limpiar el formulario
+  e.target.reset();
+});
+
 
   fetch('http://localhost:3000/api/products', {
     method: 'POST',
@@ -187,6 +230,7 @@ document.getElementById('form-agregar-producto').addEventListener('submit', func
     },
     body: JSON.stringify({ nombre, precio, imagen, stock })
   })
+  
     .then(response => response.json())
     .then(producto => {
       alert('Producto agregado correctamente');
@@ -194,7 +238,7 @@ document.getElementById('form-agregar-producto').addEventListener('submit', func
       document.getElementById('form-agregar-producto').reset();
     })
     .catch(error => console.error('Error al agregar producto:', error));
-});
+    
 
 // INICIO
 document.addEventListener("DOMContentLoaded", () => {
@@ -222,6 +266,7 @@ document.getElementById('form-agregar-producto').addEventListener('submit', func
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({ nombre, precio, imagen, stock })
+    
   })
     .then(response => response.json())
     .then(producto => {
