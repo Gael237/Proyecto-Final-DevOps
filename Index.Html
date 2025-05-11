@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="Style.css" />
+  <title>HYPEKICKS</title>
+</head>
+<body>
+  <header>
+    <div class="Navbar">
+      <img src="Logo/logo.jpg" alt="Logo" id="Logo" />
+      <h1 class="titulo-centro">HYPEKICKS</h1>
+      <div class="navbar-right">
+        <button id="btn-carrito">🛒(<span id="contador">0</span>)</button>
+        <button id="btn-login">Iniciar sesion </button>
+        <button id="btn-logout">Cerrar sesión</button>
+
+      </div>
+    </div>
+  </header>
+  <div id="pestaña-carrito" class="modal">
+    <div class="modal-contenido">
+      <span class="cerrar" onclick="cerrarModal()">&times;</span>
+      <h2>🛒 Tu Carrito</h2>
+      <div id="carrito-contenido"></div>
+      <button onclick="vaciarCarrito()">Vaciar carrito</button>
+      <button onclick="finalizarCompra()">Comprar</button>
+    </div>
+  </div>
+
+<!-- Modal con opciones de inicio de sesión o registro -->
+<div id="modal-login" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="cerrarModal()">×</span>
+    <h2>Iniciar sesión</h2>
+    <form id="login-form">
+      <input type="email" id="email-login" placeholder="Correo electrónico" required>
+      <input type="password" id="contraseña-login" placeholder="Contraseña" required>
+      <button type="submit">Iniciar sesión</button>
+    </form>
+    <p>¿No tienes cuenta? <a href="#" onclick="mostrarRegistro()">Regístrate aquí</a></p>
+  </div>
+</div>
+
+<!-- Modal de registro -->
+<div id="modal-registro" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="cerrarModal()">×</span>
+    <h2>Registrarse</h2>
+    <form id="registro-form">
+      <input type="text" id="nombre" placeholder="Nombre" required>
+      <input type="email" id="email" placeholder="Correo electrónico" required>
+      <input type="password" id="contraseña" placeholder="Contraseña" required>
+      <button type="submit">Registrar</button>
+    </form>
+  </div>
+</div>
+
+
+  <div class="Marcas">
+    <a href="/Subpaginas/nike.html" class="Nike">
+      <img src="Logo/Nike.png" alt="Nike" />
+      <p>Nike</p>
+    </a>
+    <a href="/Subpaginas/adidas.html" class="Adidas">
+      <img src="Logo/Adidas.jpg" alt="Adidas" />
+      <p>adidas</p>
+    </a>
+    <a href="/Subpaginas/puma.html" class="Puma">
+      <img src="Logo/Puma.jpg" alt="Puma" />
+      <p>Puma</p>
+    </a>
+    <a href="/Subpaginas/underarmour.html" class="underarmour">
+      <img src="Logo/under armour.jpg" alt="Under Armour" />
+      <p>Under Armour</p>
+    </a>
+  </div>
+
+  <div class="Mas-comprados">
+    <h1>Más comprados</h1>
+    <img src="https://assetspwa.liverpool.com.mx/assets/digital/landing/adidas/img/blp_adidas_Desc_0724.jpg" alt="" />
+  </div>
+
+
+  <div class="contenedor-principal">
+    <h2>Nuestros Productos</h2>
+    <div id="contenedor-productos" class="contenedor-productos">
+      <div class="producto" data-nombre="Nike Air Force 1 Shadow" data-precio="3199" data-imagen="https://99store.mx/cdn/shop/products/DD9624-100-PHCFH001-2000.png?v=1743552245&width=1445">
+        <img src="https://99store.mx/cdn/shop/products/DD9624-100-PHCFH001-2000.png?v=1743552245&width=1445" alt="Nike Air Force 1 High">
+        <h3>Nike Air Force 1 High</h3>
+        <p>$2499 MXN</p>
+        <p><strong>Tallas disponibles:</strong>
+  <select class="select-talla">
+    ${producto.talla.map(t => `<option value="${t}">${t}</option>`).join('')}
+  </select>
+</p>
+
+        <button onclick="agregarAlCarrito(this)">Agregar al carrito</button>
+    </div>
+    </div>
+  </div>
+
+  <div class="formulario-producto">
+    <h2>Agregar nuevo producto</h2>
+    <form id="form-agregar-producto">
+      <input type="text" id="nombre" placeholder="Nombre del producto" required>
+      <input type="number" id="precio" placeholder="Precio" required>
+      <input type="text" id="imagen" placeholder="URL de la imagen" required>
+      <input type="number" id="stock-S" placeholder="Stock talla S">
+      <input type="number" id="stock-M" placeholder="Stock talla M">
+      <input type="number" id="stock-L" placeholder="Stock talla L">
+
+      <button type="submit">Agregar</button>
+    </form>
+  </div>
+  
+
+  <footer>
+    <p>REDES SOCIALES</p>
+    <ul>
+      <li><a href="Link">Facebook</a></li>
+      <li><a href="Link">Instagram</a></li>
+      <li><a href="Link">YouTube</a></li>
+    </ul>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
