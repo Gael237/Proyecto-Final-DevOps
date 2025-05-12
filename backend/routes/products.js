@@ -29,37 +29,4 @@ router.post('/', async (req, res) => {
   }
 });
   
-
-// PATCH: Disminuir el stock de un producto por talla
-router.patch('/:id/decrement-stock', async (req, res) => {
-  const { talla, cantidad } = req.body;
-
-  if (!talla || typeof cantidad !== 'number') {
-    return res.status(400).json({ message: 'Talla y cantidad son obligatorios' });
-  }
-
-  try {
-    const producto = await Product.findById(req.params.id);
-    if (!producto) {
-      return res.status(404).json({ message: 'Producto no encontrado' });
-    }
-
-    // Verifica si hay stock por talla (stock es un objeto como { "M": 3, "L": 2 })
-    if (!producto.stock[talla] || producto.stock[talla] < cantidad) {
-      return res.status(400).json({ message: 'Stock insuficiente para esta talla' });
-    }
-
-    // Disminuir stock
-    producto.stock[talla] -= cantidad;
-
-    await producto.save();
-
-    res.json({ message: 'Stock actualizado', producto });
-  } catch (err) {
-    console.error('Error al actualizar stock:', err.message);
-    res.status(500).json({ message: 'Error del servidor' });
-  }
-});
-
-
   module.exports = router;
